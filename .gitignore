@@ -1,0 +1,8 @@
+*.class
+.idea/
+env
+__pycache__
+*pyc
+downloads
+chunks/*
+.DS_Store

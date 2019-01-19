@@ -1,0 +1,10 @@
+[{
+    "command": "reg_file {\"files\": [\"test_files/1392bytes.txt\", \"test_files/176088bytes.txt\",\"test_files/696bytes.txt\"]}",
+      "wait_seconds": 0
+}, {
+    "command": "list {}",
+    "wait_seconds": 0
+}, {
+    "command": "loc {\"filename\": \"test_files/1392bytes.txt\"}",
+      "wait_seconds": 0
+}]

@@ -1,0 +1,46 @@
+{
+    "server": {
+        "parameters": {
+            "host": "127.0.0.1",
+            "port": 3030,
+            "dynamic_port_range": "49201-49300"
+        }
+    },
+    "peers": [{
+        "parameters": {
+            "host": "127.0.0.1",
+            "port": 3029,
+            "dynamic_port_range": "49301-49400",
+            "num_download_threads": 3,
+            "name": "peer1"
+        },
+        "commands": [{
+            "command": "reg_file {\"files\": [\"test_files/1392bytes.txt\", \"test_files/176088bytes.txt\",\"test_files/696bytes.txt\"]}",
+            "wait_seconds": 1
+        }]
+    }, {
+        "parameters": {
+            "host": "127.0.0.1",
+            "port": 3028,
+            "dynamic_port_range": "49401-49500",
+            "num_download_threads": 3,
+            "name": "peer2"
+        },
+        "commands": [{
+            "command": "download {\"filename\": \"1392bytes.txt\", \"destination\": \"downloads/1392bytes.txt\", \"scheme\": \"rarest_first\"}",
+            "wait_seconds": 2
+        }]
+    }, {
+        "parameters": {
+            "host": "127.0.0.1",
+            "port": 3027,
+            "dynamic_port_range": "49401-49500",
+            "num_download_threads": 3,
+            "name": "peer3"
+        },
+        "commands": [{
+            "command": "reg_file {\"files\": [\"test_files/3480bytes.txt\"]}",
+            "wait_seconds": 3
+        }]
+    }]
+}

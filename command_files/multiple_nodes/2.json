@@ -1,0 +1,100 @@
+{
+    "server": {
+        "parameters": {
+            "host": "127.0.0.1",
+            "port": 3031,
+            "dynamic_port_range": "49201-49300"
+        }
+    },
+    "peers": [{
+        "parameters": {
+            "host": "127.0.0.1",
+            "port": 5029,
+            "dynamic_port_range": "49301-49400",
+            "num_download_threads": 3,
+            "name": "peer1"
+        },
+        "commands": [{
+            "command": "reg_file {\"files\": [\"test_files/1392bytes.txt\", \"test_files/176088bytes.txt\"]}",
+            "wait_seconds": 1
+        }, {
+            "command": "reg_file {\"files\": [\"test_files/1392bytes.txt\"]}",
+            "wait_seconds": 0
+        }, {
+            "command": "list {}",
+            "wait_seconds": 0
+        }, {
+            "command": "loc {\"filename\": \"176088bytes.txt\"}",
+            "wait_seconds": 0
+        }, {
+            "command": "leave {}",
+            "wait_seconds": 4
+        }, {
+            "command": "reg_file {\"files\": [\"test_files/5634816bytes.txt\"]}",
+            "wait_seconds": 0
+        }]
+    }, {
+        "parameters": {
+            "host": "127.0.0.1",
+            "port": 5028,
+            "dynamic_port_range": "49401-49500",
+            "num_download_threads": 3,
+            "name": "peer2"
+        },
+        "commands": [{
+            "command": "list {}",
+            "wait_seconds": 2
+        }, {
+            "command": "loc {\"filename\": \"1392bytes.txt\"}",
+            "wait_seconds": 0
+        }, {
+            "command": "download {\"filename\": \"176088bytes.txt\", \"destination\": \"downloads/176088bytes.txt\", \"scheme\": \"normal\"}",
+            "wait_seconds": 0
+        }, {
+            "command": "download {\"filename\": \"176088bytes.txt\", \"destination\": \"downloads/176088bytes.txt\", \"scheme\": \"normal\"}",
+            "wait_seconds": 6
+        }, {
+            "command": "list {}",
+            "wait_seconds": 0
+        }, {
+            "command": "download {\"filename\": \"5634816bytes.txt\", \"destination\": \"downloads/5634816bytes.txt\", \"scheme\": \"normal\"}",
+            "wait_seconds": 0
+        }]
+    }, {
+        "parameters": {
+            "host": "127.0.0.1",
+            "port": 5027,
+            "dynamic_port_range": "49501-49600",
+            "num_download_threads": 4,
+            "name": "peer3"
+        },
+        "commands": [{
+            "command": "download {\"filename\": \"5634816bytes.txt\", \"destination\": \"downloads/5634816bytes.txt\", \"scheme\": \"normal\"}",
+            "wait_seconds": 8
+        }]
+    }, {
+        "parameters": {
+            "host": "127.0.0.1",
+            "port": 5026,
+            "dynamic_port_range": "49601-49700",
+            "num_download_threads": 2,
+            "name": "peer4"
+        },
+        "commands": [{
+            "command": "download {\"filename\": \"5634816bytes.txt\", \"destination\": \"downloads/5634816bytes.txt\", \"scheme\": \"normal\"}",
+            "wait_seconds": 8
+        }]
+    }, {
+        "parameters": {
+            "host": "127.0.0.1",
+            "port": 5025,
+            "dynamic_port_range": "49601-49700",
+            "num_download_threads": 2,
+            "name": "peer5"
+        },
+        "commands": [{
+            "command": "download {\"filename\": \"5634816bytes.txt\", \"destination\": \"downloads/5634816bytes.txt\", \"scheme\": \"normal\"}",
+            "wait_seconds": 10
+        }]
+    }]
+}
